@@ -85,7 +85,7 @@ PHP files can also include any code that you might include in a standard HTML fi
 
 At OCDLA, we use two basic types of PHP files:
 
-- **Template ** -  ```example.tpl.php```
+- **Template** -  ```example.tpl.php```
 	
 	- Template PHP files generally include PHP code combined with HTML .
 	
