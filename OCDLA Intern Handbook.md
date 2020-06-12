@@ -2,13 +2,17 @@
 
 
 
-Intro text here. Something about OCDLA in general.
 
 
 
 
 
 
+
+
+------
+
+**Table of Contents**
 
 [TOC]
 
@@ -16,6 +20,15 @@ Intro text here. Something about OCDLA in general.
 
 
 
+------
+
+
+
+
+
+## About OCDLA
+
+Oregon Criminal Defense Lawyers Association (OCDLA) is a 501(c)(3) non-profit with over 1,300 lawyer and non-lawyer professional members throughout the greater Northwest. OCDLA produces several continuing legal education (CLE) seminars each year and publishes research materials for the legal community in electronic formats under the OCDLA, Library of Defense and Books Online domains. The organization also maintains an active eStore where customers can purchase traditional research materials and online subscriptions. OCDLA is currently expanding members’ access to these diverse publications by modernizing its online research materials and adopting current web standards and widely-used frameworks such as WordPress and MediaWiki.
 
 
 
@@ -25,55 +38,13 @@ Intro text here. Something about OCDLA in general.
 
 
 
+------
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### OCDLA and PHP
+## OCDLA and PHP
 
 OCDLA uses PHP to power all the back-end functionality of various web applications. PHP is a scripting language that is syntactically similar to JavaScript, with several key differences that are outlined below.
 
@@ -81,7 +52,7 @@ OCDLA uses PHP to power all the back-end functionality of various web applicatio
 
 #### PHP Files
 
-PHP files always end with the file extension ".php": ```hello.php```
+PHP files always end with the file extension ```.php ```
 
 
 
@@ -132,9 +103,31 @@ At OCDLA, we use two basic types of PHP files:
 
 There are two basic ways to get output in PHP: `echo` and `print`.
 
+Both keywords are used to output data to the screen and they are basically the same.
+
+Both keywords can be used with or without parentheses:
+
+```php
+<?php
+	// All these statements output the same result
+	echo "Hello World";
+	echo("Hello World");
+	print "Hello World";
+	print("Hello World");
+?>
+```
 
 
 
+
+
+
+
+
+> ###### Additional Information: 
+> PHP Manual: https://www.php.net/manual/en/function.echo.php
+> 						https://www.php.net/manual/en/function.print.php
+> W3Schools: https://www.w3schools.com/php/php_echo_print.asp
 
 
 
@@ -142,7 +135,7 @@ There are two basic ways to get output in PHP: `echo` and `print`.
 
 #### PHP Variables
 
-All PHP variables (except constants) begin with a dollar sign ```$```.  All variables (including constants) are case sensitive. Variable names must start with a letter or underscore and can be followed by letters, numbers, or underscores.
+All PHP variables (except constants) begin with a dollar sign ```$```.  All variables are case sensitive. Variable names must start with a letter or underscore and can be followed by letters, numbers, or underscores.
 
 ```php
 <?php 
@@ -159,6 +152,7 @@ There are no keywords for declaring variables in PHP; it is created when you fir
 ```php
 <?php
     $var;
+	// additional code in between
 	$var = "Being created now.";
 ?>
 ```
@@ -228,3 +222,173 @@ Constants in PHP have global scope. To use a constant, just type it's name:
 > ###### Additional Information: 
 > PHP Manual: https://www.php.net/manual/en/language.constants.php
 > W3Schools: https://www.w3schools.com/php/php_constants.asp
+
+
+
+
+
+------
+
+#### PHP Arrays
+
+
+
+
+> ###### Additional Information: 
+> PHP Manual: https://www.php.net/manual/en/language.types.array.php
+> W3Schools: https://www.w3schools.com/php/php_arrays.asp
+
+
+
+
+
+------
+
+
+
+
+
+## OCDLA and Salesforce
+
+OCDLA uses Salesforce to power multiple parts of their websites. Salesforce is a CRM (Customer Relationship Management) service and it includes:
+
+- A database (Salesforce Objects)
+
+- A query language (SOQL)
+
+- A programming language (Apex)
+
+- A front-end framework (Visualforce)
+
+  
+
+#### Preparing Your Computer for Salesforce Development
+
+There are several things that you must do to set your computer up for Salesforce development. They are:
+
+1. Sign up for a Salesforce Devhub (Developer Org)
+2. Install Salesforce CLI (sfdx)
+3. Connect your DevHub and CLI
+4. Install VS Code
+5. Install Salesforce Extensions for VS Code
+
+
+
+
+
+------
+
+##### Sign up for a Salesforce DevHub
+
+Head over to https://developer.salesforce.com/signup and sign up for a Salesforce Developer account. This will give you access to your own "DevHub" (also known as a Developer Org).
+
+
+
+
+
+------
+
+##### Install Salesforce CLI
+
+Download and install the Salesforce CLI. Use the appropriate link for your machine below:
+
+| **Operating System** | **Link to Installer**          |
+| -------------------- | ------------------------------ |
+| macOS                | https://sfdc.co/sfdx_cli_osx   |
+| Windows 64-bit       | https://sfdc.co/sfdx_cli_win64 |
+
+
+
+After installing, open a command window and enter `sfdx`.
+
+You should see something similar to this:
+
+```
+Usage: sfdx COMMAND [command-specific-options]
+Help topics, type "sfdx help TOPIC" for more details:
+sfdx force # tools for the salesforce developer
+sfdx plugins # manage plugins
+sfdx update # update sfdx-cli
+```
+
+
+
+
+
+------
+
+##### Connect your DevHub and CLI
+
+Next, you'll need to connect your DevHub account and local CLI together. This saves a lot of time in the future, allowing you to manage scratch orgs, log in, and push and pull code/data from scratch orgs all from your local CLI.
+
+
+
+To authorize your DevHub, run the following command:
+
+`sfdx force:auth:web:login -d -a DevHub`
+
+This command will only need to be run once. It will set your default account to your DevHub, with an alias of "DevHub". A window will open in your browser which is where you'll enter your credentials. 
+
+
+
+You'll be using scratch orgs for just about everything from here on out (we'll discuss scratch orgs in the next section), but in case you ever need to get into your DevHub again, you can use the following command:
+
+`sfdx force:org:open -u DevHub`
+
+
+
+
+
+------
+
+##### Install VS Code
+
+While you can and will do a lot of Salesforce coding in the Salesforce Developer Console (see the next section for more info), VS Code is still great for any CSS and Javascript coding.
+
+
+
+If you already have VS Code installed then skip to the next subtopic. Otherwise, head over to https://code.visualstudio.com/ and get it installed.
+
+
+
+
+
+------
+
+##### Install Salesforce Extensions for VS Code
+
+The final step to preparing your machine for Salesforce development is to install the Salesforce Extensions Pack for VS Code. Follow this link for more info on installing it: https://marketplace.visualstudio.com/items?itemName=salesforce.salesforcedx-vscode
+
+
+
+
+
+------
+
+>###### Additional Information: 
+> Salesforce Documentation: https://developer.salesforce.com/docs/atlas.en-us.224.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm
+> Trailhead: https://trailhead.salesforce.com/en/content/learn/modules/sfdx_app_dev/sfdx_app_dev_setup_dx
+
+
+
+
+
+
+
+------
+
+#### Salesforce Development
+
+Salesforce development happens on temporary, customized Salesforce sever spaces called "Scratch Orgs". There are two options for writing Salesforce code:
+
+1. Write code **locally** using VS Code, then push the code to a Scratch Org 
+2. Write code **in the cloud** using the Salesforce Developer Console directly inside a Scratch Org 
+
+
+
+sfdx Scratch org commands
+
+Tour of Scratch org
+
+sfdx source code commands
+
